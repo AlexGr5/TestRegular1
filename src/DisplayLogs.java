@@ -155,6 +155,7 @@ public class DisplayLogs {
     }
 
 
+    /*
     // Сортировка распознаного списка по одному паттерну
     public static List<List<String>> SortRecognLogsForOnePattern(List<List<String>> logs,
                                                                  String inputStringPattern, String sortedPattern)
@@ -191,4 +192,5 @@ public class DisplayLogs {
 
         return newList;
     }
+     */
 }

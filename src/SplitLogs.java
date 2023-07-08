@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -101,5 +102,42 @@ public class SplitLogs
         listMyPatterns = logsPattern.SplitStringForPatterns(inputPattern);
 
         return listMyPatterns;
+    }
+
+    // Сортировка распознаного списка по одному паттерну
+    public static List<List<String>> SortRecognLogsForOnePattern(List<List<String>> logs,
+                                                                 String inputStringPattern, String sortedPattern)
+    {
+        List<List<String>> newList = logs;
+
+        // Список текущего паттерна
+        List<OnePattern> listMyPatterns = SplitLogs.RecognizePatternFromInputString(inputStringPattern);
+
+        // Список сортируемого паттерна
+        List<OnePattern> SortedPattern = SplitLogs.RecognizePatternFromInputString(sortedPattern);
+
+        // Один сортируемый паттерн
+        OnePattern onePatternSorted = SortedPattern.get(0);
+
+        // Позиция сортируемого паттерна в изначальном паттерне логов
+        int position = 0;
+        for (position = 0; position < listMyPatterns.size(); position++)
+        {
+            // Определяем позицию сортируемого паттерна в изначальном паттерне для всего лога
+            if (listMyPatterns.get(position).GetNamePattern().equals(onePatternSorted.GetNamePattern()))
+                break;
+        }
+
+        // Функция СОРТИРОВКИ ВСТАВКАМИ массива
+        for (int i = 1; i < newList.size(); i++)
+        {
+            //str1.compareTo(str2)
+            for (int j = i; (j > 0) && (newList.get(j-1).get(position).compareTo(newList.get(j).get(position)) > 0); j--)
+            {
+                Collections.swap(newList, j-1, j);
+            }
+        }
+
+        return newList;
     }
 }

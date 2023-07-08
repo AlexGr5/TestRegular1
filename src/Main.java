@@ -126,7 +126,7 @@ public class Main {
 
             if (sortedPattern.length() > 0)
             {
-                result = DisplayLogs.SortRecognLogsForOnePattern(result, inputPattern, sortedPattern);
+                result = SplitLogs.SortRecognLogsForOnePattern(result, inputPattern, sortedPattern);
                 DisplayLogs.DisplayColorLogsForPattern(result, inputPattern, sortedPattern);
             }
             else
