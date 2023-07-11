@@ -96,6 +96,11 @@ public class Main {
         // %data%level%logger%thread%message
         // Enter или %level
 
+        /*
+        D:\altstu\3kurs\LetPract\log-example2.txt
+        %data%level%logger%thread%data%thread%level%logger%message
+         */
+
         // ПРОГРАММА
         try
         {
@@ -126,7 +131,7 @@ public class Main {
 
             if (sortedPattern.length() > 0)
             {
-                result = DisplayLogs.SortRecognLogsForOnePattern(result, inputPattern, sortedPattern);
+                result = SplitLogs.SortRecognLogsForOnePattern(result, inputPattern, sortedPattern);
                 DisplayLogs.DisplayColorLogsForPattern(result, inputPattern, sortedPattern);
             }
             else
